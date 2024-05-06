@@ -1,0 +1,63 @@
+using System;
+
+namespace MinhaCalculadora
+{
+    public class Calculadora
+    {
+        public double Somar(double a, double b)
+        {
+            return a + b;
+        }
+
+        public double Subtrair(double a, double b)
+        {
+            return a - b;
+        }
+
+        public double Multiplicar(double a, double b)
+        {
+            return a * b;
+        }
+
+        public double Dividir(double a, double b)
+        {
+            if (b != 0)
+                return a / b;
+            else
+                throw new DivideByZeroException("Não é possível dividir por zero.");
+        }
+    }
+}
+
+
+
+
+
+using System;
+
+namespace MinhaCalculadora
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Calculadora calculadora = new Calculadora();
+
+            double num1 = 10;
+            double num2 = 5;
+
+            Console.WriteLine($"Soma: {calculadora.Somar(num1, num2)}");
+            Console.WriteLine($"Subtração: {calculadora.Subtrair(num1, num2)}");
+            Console.WriteLine($"Multiplicação: {calculadora.Multiplicar(num1, num2)}");
+
+            try
+            {
+                Console.WriteLine($"Divisão: {calculadora.Dividir(num1, num2)}");
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+}
